@@ -35,7 +35,7 @@ class Placelist(models.Model):
 
 	title = models.CharField(max_length=100)
 	author = models.ForeignKey(User, related_name='collaborators')
-	collaborators = models.ManyToManyField(User, related_name='author', null=True)
+	collaborators = models.ManyToManyField(User, related_name='author', blank=True)
 	list_type = models.CharField(max_length=25, null=True)
 	#locations = models.ManyToManyField(City)
 	# east_bound = models.FloatField()
@@ -44,8 +44,8 @@ class Placelist(models.Model):
 	# south_bound = models.FloatField()
 	created_on = models.DateTimeField(auto_now_add=True)
 	updated_on = models.DateTimeField(auto_now_add=True)
-	followers = models.ManyToManyField(User, null=True)
-	places = models.ManyToManyField(Place, null=True)
+	followers = models.ManyToManyField(User, blank=True)
+	places = models.ManyToManyField(Place, blank=True)
 
 	class Meta:
 		ordering=('title', 'author', 'list_type', 'created_on', 'updated_on')

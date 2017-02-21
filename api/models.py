@@ -27,6 +27,9 @@ class Place(models.Model):
 	# GeoDjango-specific: a geometry field (MultiPolygonField)
 	# point = models.PointField()
 
+	class Meta:
+		ordering=('name', 'place_type', 'street_address', 'state', 'zip_code', 'lon', 'lat')
+
 	# Returns the string representation of the model.
 	def __unicode__(self):              # __unicode__ on Python 2
 		return self.name

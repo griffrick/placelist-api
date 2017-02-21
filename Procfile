@@ -1,0 +1,1 @@
+web: gunicorn placelist.wsgi --preload --workers 1

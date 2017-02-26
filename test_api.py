@@ -24,6 +24,21 @@ def test_get_single_place():
 	print r.status_code
 	print r.text
 
+def test_add_place_to_list():
+	data = 	{
+		"name": "place1",
+		"place_type": "stupid",
+		"street_address": "320 Small Court",
+		"state": "MD",
+		"zip_code": 21228,
+		"lon": 17.0,
+		"lat": 16.0
+	}
+
+	r = requests.post('http://localhost:8000/lists/1/', data)
+	print r.status_code
+	print r.text
+
 def test_get_single_list():
 	data = {
 		""
@@ -37,3 +52,21 @@ def test_get_single_list():
 
 # def test_create_list():
 # 	data = {}
+
+def test_new_list():
+	data = 	{
+		"title": "boom",
+		"author": 5,
+		"list_type": "MD",
+		"zip_code": 21228,
+		"lon": 17.0,
+		"lat": 16.0
+	}
+
+	r = requests.post('http://localhost:8000/lists/', data)
+	print r.status_code
+	print r.text
+
+test_new_list()
+
+# test_add_place_to_list()

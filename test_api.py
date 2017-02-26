@@ -26,7 +26,7 @@ def test_get_single_place():
 
 def test_add_place_to_list():
 	data = 	{
-		"name": "place1",
+		"name": "fun",
 		"place_type": "stupid",
 		"street_address": "320 Small Court",
 		"state": "MD",
@@ -35,7 +35,7 @@ def test_add_place_to_list():
 		"lat": 16.0
 	}
 
-	r = requests.post('http://localhost:8000/lists/1/', data)
+	r = requests.post('http://localhost:8000/lists/2/', data)
 	print r.status_code
 	print r.text
 
@@ -67,6 +67,6 @@ def test_new_list():
 	print r.status_code
 	print r.text
 
-test_new_list()
+# test_new_list()
 
-# test_add_place_to_list()
+test_add_place_to_list()

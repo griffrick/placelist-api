@@ -53,6 +53,9 @@ class Placelist(models.Model):
 	class Meta:
 		ordering=('title', 'author', 'list_type', 'created_on', 'updated_on')
 
+	def __unicode__(self):              # __unicode__ on Python 2
+		return self.title
+
 class UserProfile(models.Model):
 	# This line is required. Links UserProfile to a User model instance.
 	user = models.OneToOneField(User)

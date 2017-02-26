@@ -35,7 +35,7 @@ def test_add_place_to_list():
 		"lat": 16.0
 	}
 
-	r = requests.post('http://localhost:8000/lists/2/', data)
+	r = requests.post('http://placelist.pythonanywhere.com/lists/1/', data)
 	print r.status_code
 	print r.text
 
@@ -56,14 +56,14 @@ def test_get_single_list():
 def test_new_list():
 	data = 	{
 		"title": "boom",
-		"author": 5,
+		"author": 1,
 		"list_type": "MD",
 		"zip_code": 21228,
 		"lon": 17.0,
 		"lat": 16.0
 	}
 
-	r = requests.post('http://localhost:8000/lists/', data)
+	r = requests.post('http://placelist.pythonanywhere.com/lists/', data)
 	print r.status_code
 	print r.text
 

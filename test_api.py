@@ -37,6 +37,7 @@ def test_add_place_to_list():
 	}
 
 	r = requests.post('http://placelist.pythonanywhere.com/lists/1/', data)
+	# r = requests.post('http://localhost:8000/lists/1/', data)
 	print r.status_code
 	print r.text
 
@@ -69,6 +70,15 @@ def test_new_list():
 	print r.status_code
 	print r.text
 
-test_new_list()
+def get_list():
+	r = requests.get('http://localhost:8000/lists/1/')
+
+	print r.status_code
+	print r.text
+
+
+# test_new_list()
 
 # test_add_place_to_list()
+
+get_list()

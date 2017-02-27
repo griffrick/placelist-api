@@ -14,7 +14,7 @@ class PlacelistSerializerGet(serializers.ModelSerializer):
     # )
 	class Meta:
 		model = Placelist
-		fields = ('title', 'author', 'collaborators', 'list_type', 'created_on', 'updated_on', 'followers', 'places')
+		fields = ('id','title', 'author', 'collaborators', 'list_type', 'created_on', 'updated_on', 'followers', 'places')
 		depth = 2
 
 class PlacelistSerializer(serializers.ModelSerializer):

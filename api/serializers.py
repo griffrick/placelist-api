@@ -4,7 +4,7 @@ from api.models import Placelist, Place
 class PlaceSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Place
-		fields = ('name', 'place_type', 'street_address', 'state', 'zip_code', 'lat', 'lon')
+		fields = ('id', 'name', 'place_type', 'street_address', 'state', 'zip_code', 'lat', 'lon')
 
 class PlacelistSerializerGet(serializers.ModelSerializer):
     # places = serializers.HyperlinkedRelatedField(
@@ -25,4 +25,4 @@ class PlacelistSerializer(serializers.ModelSerializer):
     # )
 	class Meta:
 		model = Placelist
-		fields = ('title', 'author', 'collaborators', 'list_type', 'created_on', 'updated_on', 'followers', 'places')
+		fields = ('id','title', 'author', 'collaborators', 'list_type', 'created_on', 'updated_on', 'followers', 'places')

@@ -24,6 +24,7 @@ def test_get_single_place():
 	print r.status_code
 	print r.text
 
+
 def test_add_place_to_list():
 	data = 	{
 		"name": "fun",
@@ -55,8 +56,8 @@ def test_get_single_list():
 
 def test_new_list():
 	data = 	{
-		"title": "boom",
-		"author": 1,
+		"title": "doom",
+		"author": 'kdenny',
 		"list_type": "MD",
 		"zip_code": 21228,
 		"lon": 17.0,
@@ -64,9 +65,10 @@ def test_new_list():
 	}
 
 	r = requests.post('http://placelist.pythonanywhere.com/lists/', data)
+	# r = requests.post('http://localhost:8000/lists/', data)
 	print r.status_code
 	print r.text
 
-# test_new_list()
+test_new_list()
 
-test_add_place_to_list()
+# test_add_place_to_list()

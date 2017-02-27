@@ -49,13 +49,17 @@ def getLists():
         new_list['author'] = 'kdenny'
         new_list['list_type'] = 'etc'
         new_list['fake_id'] = this_list['_id']
+        new_list['places'] = this_list['places']
 
         r = requests.post('http://placelist.pythonanywhere.com/lists/', new_list)
 
         print r.status_code
         print r.text
+        new_list_id = json.loads(str(r.text).replace("\U0001f4af",""))['id']
 
-        # pprint(new_list)
+
+
+        pprint(new_list)
 
         new_list['places'] = []
         for pla in this_list['places']:
@@ -64,6 +68,10 @@ def getLists():
             pla['street_address'] = pla['address']
             pla['state'] = 'MD'
             new_list['places'].append(pla)
+            list_post_url = 'http://placelist.pythonanywhere.com/lists/' + str(new_list_id) + '/'
+            r = requests.post(list_post_url, pla)
+            print r.status_code
+            print r.text
 
         new_lists.append(new_list)
 
@@ -72,8 +80,4 @@ def getLists():
 
 lists = getLists()
 
-
-
-r = requests.post('http://placelist.pythonanywhere.com/lists/', lists[2])
-# r = requests.post('http://localhost:8000/lists/1/', data)
 

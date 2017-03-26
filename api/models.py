@@ -9,14 +9,14 @@ class Place(models.Model):
 	# world borders shapefile.
 	name = models.CharField(max_length=100)
 	# Want this to be an array to support places which are bars and restaurants, etc
-	place_type = models.CharField(max_length=50)
+	place_type = models.CharField(max_length=50, null=True)
 
-	# city = models.CharField(max_length=100)
-	# neighborhood = models.CharField(max_length=100, null=True)
+	city = models.CharField(max_length=100, null=True)
+	neighborhood = models.CharField(max_length=100, null=True)
 	street_address = models.CharField(max_length=100)
 	# url = models.CharField(max_length=100, null=True)
 
-	state = models.CharField(max_length=100)
+	state = models.CharField(max_length=100, null=True)
 	zip_code = models.CharField(max_length=5, null=True)
 
 	# list_count = models.IntegerField(default=0)
@@ -28,7 +28,7 @@ class Place(models.Model):
 	# point = models.PointField()
 
 	class Meta:
-		ordering=('name', 'place_type', 'street_address', 'state', 'zip_code', 'lon', 'lat')
+		ordering=('name', 'place_type', 'city', 'neighborhood', 'street_address', 'state', 'zip_code', 'lon', 'lat')
 
 	# Returns the string representation of the model.
 	def __unicode__(self):              # __unicode__ on Python 2

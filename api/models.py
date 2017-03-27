@@ -59,10 +59,24 @@ class Placelist(models.Model):
 class UserProfile(models.Model):
 	# This line is required. Links UserProfile to a User model instance.
 	user = models.OneToOneField(User)
-	# location = models.ForeignKey(City)
+
+	city = models.CharField(max_length=25, null=True)
+	registration_date = models.DateTimeField(auto_now_add=True)
+	last_active = models.DateTimeField(auto_now_add=True)
+	lists = models.ManyToManyField(Placelist, blank=True)
+	subscriptions = models.ManyToManyField(Placelist, blank=True)
+	collaborative_lists = models.ManyToManyField(Placelist, blank=True)
+	starred_places = models.ManyToManyField(Place, blank=True)
+
 	# followers = ManyToManyField(User)
 
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):
 		return self.user.username
+
+
+
+
+
+
 

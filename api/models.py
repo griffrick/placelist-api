@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
+
 from django.contrib.auth.models import User
 from django.db import models
+
 
 # Create your models here.
 
@@ -63,9 +65,9 @@ class UserProfile(models.Model):
 	city = models.CharField(max_length=25, null=True)
 	registration_date = models.DateTimeField(auto_now_add=True)
 	last_active = models.DateTimeField(auto_now_add=True)
-	lists = models.ManyToManyField(Placelist, blank=True)
-	subscriptions = models.ManyToManyField(Placelist, blank=True)
-	collaborative_lists = models.ManyToManyField(Placelist, blank=True)
+	lists = models.ManyToManyField(Placelist, blank=True, related_name="subscriptions")
+	subscriptions = models.ManyToManyField(Placelist, blank=True, related_name="lists")
+	# 	collaborative_lists = models.ManyToManyField(Placelist, blank=True)
 	starred_places = models.ManyToManyField(Place, blank=True)
 
 	# followers = ManyToManyField(User)
@@ -73,10 +75,3 @@ class UserProfile(models.Model):
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):
 		return self.user.username
-
-
-
-
-
-
-

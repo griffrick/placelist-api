@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 
+from django.db.models.signals import post_save
+
+
 
 # Create your models here.
 
@@ -31,7 +34,7 @@ class Place(models.Model):
 	# point = models.PointField()
 
 	class Meta:
-		ordering=('name', 'place_type', 'city', 'neighborhood', 'street_address', 'state', 'zip_code', 'lon', 'lat')
+		ordering=('name', 'place_type', 'city', 'neighborhood', 'street_address', 'url', 'photoUrl', 'state', 'zip_code', 'lon', 'lat')
 
 	# Returns the string representation of the model.
 	def __unicode__(self):              # __unicode__ on Python 2
@@ -76,3 +79,9 @@ class UserProfile(models.Model):
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):
 		return self.user.username
+
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)
